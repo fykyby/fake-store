@@ -46,6 +46,14 @@ header {
     height: 65%;
     flex-grow: 1;
 
+    &:focus-within {
+      input,
+      button {
+        outline: 2px solid var(--color3);
+        z-index: 2;
+      }
+    }
+
     input {
       // width: 8rem;
       width: 100%;
@@ -53,11 +61,6 @@ header {
       border-radius: var(--border-radius) 0 0 var(--border-radius);
       background-color: var(--color2);
       color: var(--color1);
-
-      &:focus {
-        outline: 2px solid var(--color3);
-        z-index: 2;
-      }
     }
 
     button {
