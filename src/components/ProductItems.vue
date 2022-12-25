@@ -42,7 +42,7 @@ const props = defineProps({
 
     &:hover {
       outline: 2px solid var(--color3);
-      scale: 1.02;
+      scale: 1.01;
     }
 
     img {
