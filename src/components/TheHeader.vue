@@ -23,11 +23,12 @@ function search() {
 header {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding-inline: 0.6rem;
   width: 100%;
   min-height: 3rem;
   height: 1px;
-  padding-inline: 0.4rem;
   box-shadow: var(--shadow);
   background-color: var(--color4);
 
@@ -35,7 +36,6 @@ header {
     user-select: none;
     white-space: nowrap;
     font-size: 1.6rem;
-    flex-grow: 1;
     text-align: left;
   }
 
@@ -44,16 +44,18 @@ header {
     flex-wrap: nowrap;
     font-size: 0.9rem;
     height: 65%;
+    flex-grow: 1;
 
     input {
-      width: 8rem;
+      // width: 8rem;
+      width: 100%;
       padding-inline: 0.4rem;
       border-radius: var(--border-radius) 0 0 var(--border-radius);
       background-color: var(--color2);
       color: var(--color1);
 
       &:focus {
-        outline: 1px solid var(--color3);
+        outline: 2px solid var(--color3);
         z-index: 2;
       }
     }
