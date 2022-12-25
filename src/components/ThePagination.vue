@@ -16,10 +16,11 @@ defineProps({
 });
 
 const emit = defineEmits(["changePage"]);
+const pageItemLimit = 12;
 </script>
 
 <template>
-  <div class="pagination" v-if="totalItems > 10">
+  <div class="pagination" v-if="totalItems > pageItemLimit">
     <button
       class="first"
       :disabled="page - 1 <= 0"
@@ -40,7 +41,7 @@ const emit = defineEmits(["changePage"]);
 
     <button
       class="next"
-      :disabled="page * 10 + 10 > totalItems"
+      :disabled="page * pageItemLimit + pageItemLimit > totalItems"
       @click="emit('changePage', page + 1)"
     >
       {{ page + 1 }}
@@ -48,8 +49,8 @@ const emit = defineEmits(["changePage"]);
 
     <button
       class="last"
-      :disabled="page * 10 + 10 > totalItems"
-      @click="emit('changePage', Math.floor(totalItems / 10))"
+      :disabled="page * pageItemLimit + pageItemLimit > totalItems"
+      @click="emit('changePage', Math.floor(totalItems / pageItemLimit))"
     >
       <BIconSkipForwardFill />
     </button>
