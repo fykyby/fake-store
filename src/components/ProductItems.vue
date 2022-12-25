@@ -25,16 +25,16 @@ const props = defineProps({
   padding-block: 1.6rem;
   padding-inline: 0.6rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: 1.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
 
   .product {
     background-color: var(--color4);
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    padding-bottom: 0.6rem;
+    gap: 0.8rem;
+    padding-bottom: 0.8rem;
     cursor: pointer;
     border-radius: var(--border-radius);
     aspect-ratio: 1/1;

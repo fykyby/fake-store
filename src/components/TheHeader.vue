@@ -55,10 +55,9 @@ header {
     }
 
     input {
-      // width: 8rem;
       width: 100%;
       padding-inline: 0.4rem;
-      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      border-radius: 999px 0 0 999px;
       background-color: var(--color2);
       color: var(--color1);
     }
@@ -68,7 +67,7 @@ header {
       aspect-ratio: 1;
       display: grid;
       place-items: center;
-      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      border-radius: 0 999px 999px 0;
       background-color: var(--color2);
       color: var(--color1);
     }
