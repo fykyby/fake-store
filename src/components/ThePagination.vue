@@ -18,29 +18,41 @@ defineProps({
 const emit = defineEmits(["changePage"]);
 </script>
 
+<!-- v-if="page - 1 > 0" -->
+<!-- v-if="page - 1 > 0" -->
+<!-- v-if="page * 10 + 10 <= totalItems" -->
+<!-- v-if="page * 10 + 10 <= totalItems" -->
 <template>
-  <div class="pagination" v-if="page * 10 <= totalItems">
-    <button class="first" v-if="page - 1 > 0" @click="emit('changePage', 1)">
+  <div class="pagination">
+    <button
+      class="first"
+      :disabled="page - 1 <= 0"
+      @click="emit('changePage', 1)"
+    >
       <BIconSkipBackwardFill />
     </button>
+
     <button
       class="prev"
-      v-if="page - 1 > 0"
+      :disabled="page - 1 <= 0"
       @click="emit('changePage', page - 1)"
     >
       {{ page - 1 }}
     </button>
+
     <button class="current">{{ page }}</button>
+
     <button
       class="next"
-      v-if="page * 10 + 10 <= totalItems"
+      :disabled="page * 10 + 10 > totalItems"
       @click="emit('changePage', page + 1)"
     >
       {{ page + 1 }}
     </button>
+
     <button
       class="last"
-      v-if="page * 10 + 10 <= totalItems"
+      :disabled="page * 10 + 10 > totalItems"
       @click="emit('changePage', Math.floor(totalItems / 10))"
     >
       <BIconSkipForwardFill />
@@ -63,7 +75,7 @@ const emit = defineEmits(["changePage"]);
     aspect-ratio: 1;
     background: none;
     font-size: 1.3rem;
-    color: white;
+    color: var(--color1);
     border-radius: 999px;
     display: flex;
     justify-content: center;
@@ -71,6 +83,15 @@ const emit = defineEmits(["changePage"]);
 
     &:hover {
       background: var(--color4);
+    }
+
+    &:disabled {
+      cursor: default;
+      color: var(--color5);
+
+      &:hover {
+        background: none;
+      }
     }
   }
 

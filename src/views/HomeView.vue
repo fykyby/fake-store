@@ -8,7 +8,14 @@ defineProps({
 </script>
 
 <template>
-  <ProductItems :products="products" />
+  <main>
+    <ProductItems :products="products" />
+  </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+</style>

@@ -60,7 +60,7 @@ header {
 
     input {
       width: 100%;
-      padding-inline: 0.4rem;
+      padding-inline: 0.6rem;
       border-radius: 999px 0 0 999px;
       background-color: var(--color2);
       color: var(--color1);
@@ -75,6 +75,20 @@ header {
       border-radius: 0 999px 999px 0;
       background-color: var(--color2);
       color: var(--color1);
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  header {
+    min-height: 3.4rem;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    form {
+      font-size: 1rem;
     }
   }
 }
