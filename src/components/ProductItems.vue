@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import type { Product } from "@/types";
+import { BIconBagPlus } from "bootstrap-icons-vue";
 
 defineProps({
   products: Array<Product>,
 });
+
+function addToCart() {
+  console.log("add to cart");
+  // TODO
+}
 </script>
 
 <template>
@@ -12,13 +18,19 @@ defineProps({
       <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
       <p class="title">{{ product.title }}</p>
       <p class="price">${{ product.price }}</p>
+      <button @click="addToCart">
+        <BIconBagPlus />
+      </button>
     </article>
   </div>
 </template>
 
 <style lang="scss">
 .products {
+  --addBtnSize: 2.8rem;
+
   gap: 1rem;
+  row-gap: var(--addBtnSize);
   padding-block: 1rem;
   padding-inline: 0.6rem;
   display: grid;
@@ -30,11 +42,12 @@ defineProps({
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    padding-bottom: 0.8rem;
+    padding-bottom: 1.8rem;
     cursor: pointer;
     border-radius: var(--border-radius);
     aspect-ratio: 1/1;
     transition: scale 0.2s;
+    position: relative;
 
     &:hover {
       outline: 2px solid var(--color3);
@@ -61,6 +74,26 @@ defineProps({
       overflow: hidden;
       padding-inline: 0.6rem;
       font-weight: bold;
+    }
+
+    button {
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      position: absolute;
+      aspect-ratio: 1;
+      font-size: calc(var(--addBtnSize) / 2);
+      width: var(--addBtnSize);
+      bottom: -1.4rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-color: var(--color3);
+      color: var(--color2);
+
+      &:hover {
+        scale: 1.1;
+      }
     }
   }
 }

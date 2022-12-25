@@ -97,10 +97,10 @@ header {
     aspect-ratio: 1;
     display: grid;
     place-items: center;
+    border-radius: 999px;
 
     &:hover {
       background-color: var(--color4);
-      border-radius: 999px;
     }
   }
 }
