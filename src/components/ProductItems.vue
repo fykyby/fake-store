@@ -1,18 +1,14 @@
 <script setup lang="ts">
 import type { Product } from "@/types";
 
-const props = defineProps({
+defineProps({
   products: Array<Product>,
 });
 </script>
 
 <template>
   <div class="products">
-    <article
-      class="product"
-      v-for="product in props.products"
-      :key="product.id"
-    >
+    <article class="product" v-for="product in products" :key="product.id">
       <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
       <p class="title">{{ product.title }}</p>
       <p class="price">${{ product.price }}</p>
