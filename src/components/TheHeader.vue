@@ -29,6 +29,7 @@ header {
   height: 1px;
   padding-inline: 0.4rem;
   box-shadow: var(--shadow);
+  background-color: var(--color4);
 
   h1 {
     user-select: none;
@@ -48,7 +49,7 @@ header {
       width: 8rem;
       padding-inline: 0.4rem;
       border-radius: var(--border-radius) 0 0 var(--border-radius);
-      background-color: var(--color4);
+      background-color: var(--color2);
       color: var(--color1);
 
       &:focus {
@@ -63,7 +64,7 @@ header {
       display: grid;
       place-items: center;
       border-radius: 0 var(--border-radius) var(--border-radius) 0;
-      background-color: var(--color4);
+      background-color: var(--color2);
       color: var(--color1);
     }
   }

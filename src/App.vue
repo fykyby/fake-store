@@ -19,11 +19,11 @@ async function fetchProducts() {
 }
 
 onMounted(() => {
-  // fetchProducts();
+  fetchProducts();
 });
 </script>
 
 <template>
   <TheHeader />
-  <router-view />
+  <router-view :products="products" />
 </template>
