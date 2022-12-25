@@ -25,8 +25,8 @@ defineProps({
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
 
   .product {
-    background-color: var(--color4);
-    box-shadow: var(--shadow);
+    background-color: var(--color2);
+    outline: 2px solid var(--color4);
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -60,6 +60,7 @@ defineProps({
       text-overflow: ellipsis;
       overflow: hidden;
       padding-inline: 0.6rem;
+      font-weight: bold;
     }
   }
 }
