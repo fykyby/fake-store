@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <ProductItems :products="products" />
+  <ProductItems :products="props.products" />
 </template>
 
 <style scoped lang="scss"></style>

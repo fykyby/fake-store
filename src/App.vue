@@ -15,7 +15,6 @@ async function fetchProducts() {
   );
   const data = await response.json();
   products.value = data.products;
-  console.log(data.products);
 }
 
 onMounted(() => {
