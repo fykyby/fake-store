@@ -31,6 +31,9 @@ header {
   height: 1px;
   box-shadow: var(--shadow);
   background-color: var(--color4);
+  position: sticky;
+  top: 0;
+  z-index: 20;
 
   h1 {
     user-select: none;
@@ -45,6 +48,7 @@ header {
     font-size: 0.9rem;
     height: 65%;
     flex-grow: 1;
+    justify-content: flex-end;
 
     &:focus-within {
       input,
@@ -60,6 +64,7 @@ header {
       border-radius: 999px 0 0 999px;
       background-color: var(--color2);
       color: var(--color1);
+      max-width: 20rem;
     }
 
     button {

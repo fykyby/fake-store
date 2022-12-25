@@ -22,11 +22,11 @@ const props = defineProps({
 
 <style lang="scss">
 .products {
-  padding-block: 1.6rem;
+  gap: 1rem;
+  padding-block: 1rem;
   padding-inline: 0.6rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  gap: 1rem;
 
   .product {
     background-color: var(--color4);
