@@ -8,7 +8,11 @@ const props = defineProps({
 
 <template>
   <div class="products">
-    <article v-for="product in props.products" :key="product.id">
+    <article
+      class="product"
+      v-for="product in props.products"
+      :key="product.id"
+    >
       <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
       <p class="title">{{ product.title }}</p>
       <p class="price">${{ product.price }}</p>
@@ -24,8 +28,7 @@ const props = defineProps({
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   gap: 1.6rem;
 
-  article {
-    // outline: 1px solid red;
+  .product {
     background-color: var(--color4);
     box-shadow: var(--shadow);
     display: flex;
@@ -35,6 +38,12 @@ const props = defineProps({
     cursor: pointer;
     border-radius: var(--border-radius);
     aspect-ratio: 1/1;
+    transition: scale 0.2s;
+
+    &:hover {
+      outline: 2px solid var(--color3);
+      scale: 1.02;
+    }
 
     img {
       object-fit: cover;
