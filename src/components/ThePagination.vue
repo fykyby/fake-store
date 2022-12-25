@@ -18,12 +18,8 @@ defineProps({
 const emit = defineEmits(["changePage"]);
 </script>
 
-<!-- v-if="page - 1 > 0" -->
-<!-- v-if="page - 1 > 0" -->
-<!-- v-if="page * 10 + 10 <= totalItems" -->
-<!-- v-if="page * 10 + 10 <= totalItems" -->
 <template>
-  <div class="pagination">
+  <div class="pagination" v-if="totalItems > 10">
     <button
       class="first"
       :disabled="page - 1 <= 0"

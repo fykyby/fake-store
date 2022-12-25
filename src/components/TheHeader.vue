@@ -92,4 +92,19 @@ header {
     }
   }
 }
+
+@media (min-width: 769px) {
+  header {
+    min-height: 3.6rem;
+    padding-inline: 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    form {
+      font-size: 1.1rem;
+    }
+  }
+}
 </style>

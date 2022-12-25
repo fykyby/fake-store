@@ -38,7 +38,6 @@ defineProps({
 
     &:hover {
       outline: 2px solid var(--color3);
-      scale: 1.01;
     }
 
     img {
@@ -62,6 +61,19 @@ defineProps({
       overflow: hidden;
       padding-inline: 0.6rem;
     }
+  }
+}
+
+@media (min-width: 769px) {
+  .products {
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
 }
 </style>
