@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import type { Product } from "@/types";
+import { store } from "@/store";
 import { BIconBagPlus } from "bootstrap-icons-vue";
-
-defineProps({
-  products: Array<Product>,
-});
+import ThePagination from "./ThePagination.vue";
 
 function addToCart() {
   console.log("add to cart");
@@ -14,7 +11,11 @@ function addToCart() {
 
 <template>
   <div class="products">
-    <article class="product" v-for="product in products" :key="product.id">
+    <article
+      class="product"
+      v-for="product in store.products"
+      :key="product.id"
+    >
       <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
       <p class="title">{{ product.title }}</p>
       <p class="price">${{ product.price }}</p>
@@ -23,6 +24,7 @@ function addToCart() {
       </button>
     </article>
   </div>
+  <ThePagination />
 </template>
 
 <style lang="scss">

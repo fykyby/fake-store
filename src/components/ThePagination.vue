@@ -1,59 +1,63 @@
 <script setup lang="ts">
+import { store } from "@/store";
 import {
   BIconSkipBackwardFill,
   BIconSkipForwardFill,
 } from "bootstrap-icons-vue";
 
-defineProps({
-  page: {
-    default: 1,
-    type: Number,
-  },
-  totalItems: {
-    default: 0,
-    type: Number,
-  },
-});
-
-const emit = defineEmits(["changePage"]);
 const pageItemLimit = 12;
 </script>
 
 <template>
-  <div class="pagination" v-if="totalItems > pageItemLimit">
-    <button
+  <div class="pagination" v-if="store.totalItems > pageItemLimit">
+    <router-link
       class="first"
-      :disabled="page - 1 <= 0"
-      @click="emit('changePage', 1)"
+      :class="{ disabled: store.page - 1 <= 0 }"
+      to="/"
     >
       <BIconSkipBackwardFill />
-    </button>
+    </router-link>
 
-    <button
+    <router-link
+      v-if="store.page - 1 !== 1"
       class="prev"
-      :disabled="page - 1 <= 0"
-      @click="emit('changePage', page - 1)"
+      :class="{ disabled: store.page - 1 <= 0 }"
+      :to="`/${store.page - 1}`"
     >
-      {{ page - 1 }}
-    </button>
+      {{ store.page - 1 }}
+    </router-link>
+    <router-link
+      v-else
+      class="prev"
+      :class="{ disabled: store.page - 1 <= 0 }"
+      to="/"
+    >
+      {{ store.page - 1 }}
+    </router-link>
 
-    <button class="current">{{ page }}</button>
+    <router-link class="current" :to="`/${store.page}`">{{
+      store.page
+    }}</router-link>
 
-    <button
+    <router-link
       class="next"
-      :disabled="page * pageItemLimit + pageItemLimit > totalItems"
-      @click="emit('changePage', page + 1)"
+      :class="{
+        disabled: store.page * pageItemLimit + pageItemLimit > store.totalItems,
+      }"
+      :to="`/${store.page + 1}`"
     >
-      {{ page + 1 }}
-    </button>
+      {{ store.page + 1 }}
+    </router-link>
 
-    <button
+    <router-link
       class="last"
-      :disabled="page * pageItemLimit + pageItemLimit > totalItems"
-      @click="emit('changePage', Math.floor(totalItems / pageItemLimit))"
+      :class="{
+        disabled: store.page * pageItemLimit + pageItemLimit > store.totalItems,
+      }"
+      :to="`/${Math.floor(store.totalItems / pageItemLimit)}`"
     >
       <BIconSkipForwardFill />
-    </button>
+    </router-link>
   </div>
 </template>
 
@@ -67,7 +71,7 @@ const pageItemLimit = 12;
   width: fit-content;
   margin: 0 auto;
 
-  button {
+  a {
     width: 2.6rem;
     aspect-ratio: 1;
     background: none;
@@ -82,9 +86,10 @@ const pageItemLimit = 12;
       background: var(--color4);
     }
 
-    &:disabled {
+    &.disabled {
       cursor: default;
       color: var(--color5);
+      pointer-events: none;
 
       &:hover {
         background: none;

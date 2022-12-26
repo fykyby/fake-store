@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import type { Product } from "@/types";
+import { store } from "@/store";
+import { watch } from "vue";
+import { useRoute } from "vue-router";
 import ProductItems from "../components/ProductItems.vue";
 
-defineProps({
-  products: Array<Product>,
-});
+const route = useRoute();
+
+function syncPageToRoute(newParams: any) {
+  const newPage = Array.isArray(newParams.page)
+    ? parseInt(newParams.page[0])
+    : parseInt(newParams.page) || 1;
+
+  store.setPage(newPage);
+}
+
+syncPageToRoute(route.params);
+watch(() => route.params, syncPageToRoute);
 </script>
 
 <template>
   <main>
-    <ProductItems :products="products" />
+    <ProductItems />
   </main>
 </template>
 
