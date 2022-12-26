@@ -9,7 +9,9 @@ function search() {
 
 <template>
   <header>
-    <h1>Fake-Store</h1>
+    <router-link to="/">
+      <h1>Fake-Store</h1>
+    </router-link>
     <form @submit.prevent="search">
       <input type="search" placeholder="Search Product" />
       <button>
