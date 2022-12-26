@@ -30,7 +30,7 @@ function addToCart() {
   --addBtnSize: 2.8rem;
 
   gap: 1rem;
-  row-gap: var(--addBtnSize);
+  row-gap: calc(1rem + var(--addBtnSize) / 2);
   padding-block: 1rem;
   padding-inline: 0.6rem;
   display: grid;
@@ -42,7 +42,7 @@ function addToCart() {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    padding-bottom: 1.8rem;
+    padding-bottom: calc(1rem + var(--addBtnSize) / 3);
     cursor: pointer;
     border-radius: var(--border-radius);
     aspect-ratio: 1/1;
