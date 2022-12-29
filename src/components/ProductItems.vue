@@ -2,6 +2,32 @@
 import { store } from "@/store";
 import { BIconBagPlus } from "bootstrap-icons-vue";
 import ThePagination from "./ThePagination.vue";
+import { onMounted, watch } from "vue";
+
+const pageItemLimit = 12;
+
+async function fetchProducts() {
+  const response = await fetch(
+    `https://dummyjson.com/products?limit=${pageItemLimit}&skip=${
+      (store.page - 1) * pageItemLimit
+    }&select=category,id,price,thumbnail,title`
+  );
+  const data = await response.json();
+  store.setProducts(data.products);
+  store.setTotalItems(data.total);
+}
+
+onMounted(() => {
+  fetchProducts();
+});
+
+watch(
+  () => store.page,
+  () => {
+    fetchProducts();
+    window.scrollTo(0, 0);
+  }
+);
 
 function addToCart() {
   console.log("add to cart");

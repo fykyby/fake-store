@@ -76,7 +76,7 @@ header {
       width: 100%;
       padding-left: 0.6rem;
       border-radius: 999px 0 0 999px;
-      background-color: var(--color4);
+
       color: var(--color1);
       max-width: 20rem;
     }
@@ -87,8 +87,13 @@ header {
       display: grid;
       place-items: center;
       border-radius: 0 999px 999px 0;
-      background-color: var(--color4);
       color: var(--color1);
+    }
+
+    input,
+    button {
+      background-color: var(--color2);
+      outline: 1px solid var(--color4);
     }
   }
 
