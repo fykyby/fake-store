@@ -3,6 +3,8 @@ import { store } from "@/store";
 import { BIconTrash3 } from "bootstrap-icons-vue";
 import { ref, watch } from "vue";
 
+const emit = defineEmits(["hide"]);
+
 const finalPrice = ref(0);
 
 function deleteFromCart(id: number) {
@@ -10,6 +12,17 @@ function deleteFromCart(id: number) {
   const indexToDelete = newCart.findIndex((item) => item.id === id);
   newCart.splice(indexToDelete, 1);
   store.setCart(newCart);
+}
+
+function onClickOutside(e: any) {
+  if (
+    e.target.classList.contains("addToCartBtn") ||
+    e.target.classList.contains("deleteItemBtn") ||
+    e.target.classList.contains("cartBtn")
+  )
+    return;
+
+  emit("hide");
 }
 
 watch(
@@ -26,13 +39,13 @@ watch(
 </script>
 
 <template>
-  <div class="cart">
+  <div class="cart" v-click-outside-element="onClickOutside">
     <div class="items">
       <article class="item" v-for="item in store.cart" :key="item.id">
         <img :src="item.thumbnail" alt="Item thumbnail" />
         <p class="title">{{ item.title }}</p>
         <p class="price">${{ item.price }}</p>
-        <button class="deleteBtn" @click="deleteFromCart(item.id)">
+        <button class="deleteItemBtn" @click="deleteFromCart(item.id)">
           <BIconTrash3 />
         </button>
       </article>
@@ -49,7 +62,6 @@ watch(
   position: absolute;
   background-color: var(--color2);
   border-radius: var(--border-radius);
-  outline: 2px solid var(--color4);
   width: calc(100% - 1.2rem);
   max-width: 36rem;
   right: 0rem;
@@ -59,6 +71,8 @@ watch(
   font-size: 1rem;
   margin-top: 0.6rem;
   margin-right: 0.6rem;
+  box-shadow: var(--shadow);
+  // outline: 2px solid var(--color4);
 
   .items {
     display: flex;
@@ -101,7 +115,7 @@ watch(
         font-weight: bold;
       }
 
-      .deleteBtn {
+      .deleteItemBtn {
         flex-shrink: 0;
         width: 2rem;
         aspect-ratio: 1;
@@ -165,7 +179,7 @@ watch(
 
     .items {
       .item {
-        .deleteBtn {
+        .deleteItemBtn {
           font-size: 1.4rem;
           width: 2.2rem;
         }
@@ -186,6 +200,13 @@ watch(
 
     .items {
       padding-block: 1rem;
+
+      .item {
+        .deleteItemBtn {
+          font-size: 1.6rem;
+          width: 2.4rem;
+        }
+      }
     }
   }
 }

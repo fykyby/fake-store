@@ -9,10 +9,6 @@ function search() {
   console.log("search");
   // TODO
 }
-
-function onClickOutside() {
-  console.log("out");
-}
 </script>
 
 <template>
@@ -33,7 +29,7 @@ function onClickOutside() {
     >
       <BIconBag />
     </button>
-    <TheCart v-if="cartExpanded" />
+    <TheCart v-if="cartExpanded" @hide="cartExpanded = false" />
   </header>
 </template>
 
@@ -58,7 +54,8 @@ header {
   top: 0;
   z-index: 20;
   max-width: 1280px;
-  border-bottom: 2px solid var(--color4);
+  box-shadow: var(--shadow);
+  // border-bottom: 2px solid var(--color4);
 
   a:focus-visible {
     outline: 2px solid var(--color3);

@@ -45,7 +45,7 @@ function addToCart(product: Product) {
       <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
       <p class="title">{{ product.title }}</p>
       <p class="price">${{ product.price }}</p>
-      <button @click="addToCart(product)">
+      <button class="addToCartBtn" @click="addToCart(product)">
         <BIconBagPlus />
       </button>
     </article>
@@ -104,7 +104,7 @@ function addToCart(product: Product) {
       font-weight: bold;
     }
 
-    button {
+    .addToCartBtn {
       display: grid;
       place-items: center;
       border-radius: 999px;
