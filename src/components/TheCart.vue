@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { store } from "@/store";
+import type { Product } from "@/types";
 import { BIconTrash3 } from "bootstrap-icons-vue";
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 const emit = defineEmits(["hide"]);
 
@@ -25,17 +26,25 @@ function onClickOutside(e: any) {
   emit("hide");
 }
 
+function calculateFinalPrice(newCart: Array<Product>) {
+  if (newCart.length < 1) {
+    finalPrice.value = 0;
+    return;
+  }
+
+  finalPrice.value = newCart.reduce((prev, curr) => prev + curr.price, 0);
+}
+
 watch(
   () => store.cart,
   (newCart) => {
-    if (newCart.length < 1) {
-      finalPrice.value = 0;
-      return;
-    }
-
-    finalPrice.value = newCart.reduce((prev, curr) => prev + curr.price, 0);
+    calculateFinalPrice(newCart);
   }
 );
+
+onMounted(() => {
+  calculateFinalPrice(store.cart);
+});
 </script>
 
 <template>
