@@ -81,7 +81,6 @@ onMounted(() => {
   margin-top: 0.6rem;
   margin-right: 0.6rem;
   box-shadow: var(--shadow);
-  // outline: 2px solid var(--color4);
 
   .items {
     display: flex;

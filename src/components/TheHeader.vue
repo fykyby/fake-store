@@ -55,7 +55,6 @@ header {
   z-index: 20;
   max-width: 1280px;
   box-shadow: var(--shadow);
-  // border-bottom: 2px solid var(--color4);
 
   a:focus-visible {
     outline: 2px solid var(--color3);
@@ -132,7 +131,6 @@ header {
     }
 
     &.expanded {
-      // background-color: var(--color4);
       outline: 2px solid var(--color4);
     }
   }
