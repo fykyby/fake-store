@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { store } from "@/store";
 import { BIconSearch, BIconBag } from "bootstrap-icons-vue";
 import { ref } from "vue";
 import TheCart from "./TheCart.vue";
@@ -28,6 +29,9 @@ function search() {
       @click="cartExpanded = !cartExpanded"
     >
       <BIconBag />
+      <p class="cartCount" v-if="store.cart.length > 0">
+        {{ store.cart.length }}
+      </p>
     </button>
     <TheCart v-if="cartExpanded" @hide="cartExpanded = false" />
   </header>
@@ -121,6 +125,7 @@ header {
     display: grid;
     place-items: center;
     border-radius: 999px;
+    position: relative;
 
     &:focus-visible {
       outline: 2px solid var(--color3);
@@ -132,6 +137,22 @@ header {
 
     &.expanded {
       outline: 2px solid var(--color4);
+    }
+
+    .cartCount {
+      position: absolute;
+      font-size: 0.9rem;
+      bottom: 0;
+      right: 0;
+      background-color: var(--color3);
+      color: white;
+      height: 1.2rem;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
     }
   }
 }
