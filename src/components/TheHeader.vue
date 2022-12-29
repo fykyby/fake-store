@@ -110,7 +110,7 @@ header {
     input,
     button {
       background-color: var(--color2);
-      outline: 1px solid var(--color4);
+      outline: 2px solid var(--color4);
     }
   }
 
@@ -132,7 +132,8 @@ header {
     }
 
     &.expanded {
-      background-color: var(--color4);
+      // background-color: var(--color4);
+      outline: 2px solid var(--color4);
     }
   }
 }

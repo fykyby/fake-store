@@ -110,7 +110,7 @@ const pageItemLimit = 12;
   .current {
     grid-column-start: 3;
     grid-column-end: 4;
-    background-color: var(--color4);
+    outline: 2px solid var(--color4);
     font-size: 1.6rem;
   }
 
