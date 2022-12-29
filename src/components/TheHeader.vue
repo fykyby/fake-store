@@ -9,6 +9,10 @@ function search() {
   console.log("search");
   // TODO
 }
+
+function onClickOutside() {
+  console.log("out");
+}
 </script>
 
 <template>

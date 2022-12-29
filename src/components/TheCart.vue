@@ -52,13 +52,13 @@ watch(
   outline: 2px solid var(--color4);
   width: calc(100% - 1.2rem);
   max-width: 36rem;
-  right: 0.6rem;
+  right: 0rem;
   top: 3.4rem;
   z-index: inherit;
   padding-inline: 0.6rem;
   font-size: 1rem;
   margin-top: 0.6rem;
-  // margin-right: 0.6rem;
+  margin-right: 0.6rem;
 
   .items {
     display: flex;
