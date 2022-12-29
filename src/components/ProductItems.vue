@@ -3,6 +3,7 @@ import { store } from "@/store";
 import { BIconBagPlus } from "bootstrap-icons-vue";
 import ThePagination from "./ThePagination.vue";
 import { onMounted, watch } from "vue";
+import type { Product } from "@/types";
 
 const pageItemLimit = 12;
 
@@ -29,9 +30,8 @@ watch(
   }
 );
 
-function addToCart() {
-  console.log("add to cart");
-  // TODO
+function addToCart(product: Product) {
+  store.setCart([...store.cart, product]);
 }
 </script>
 
@@ -45,7 +45,7 @@ function addToCart() {
       <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
       <p class="title">{{ product.title }}</p>
       <p class="price">${{ product.price }}</p>
-      <button @click="addToCart">
+      <button @click="addToCart(product)">
         <BIconBagPlus />
       </button>
     </article>
@@ -119,8 +119,11 @@ function addToCart() {
       background-color: var(--color3);
       color: var(--color2);
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         scale: 1.1;
+        outline: none;
+        background-color: var(--color6);
       }
     }
   }

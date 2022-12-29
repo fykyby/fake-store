@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { BIconSearch, BIconBag } from "bootstrap-icons-vue";
+import { ref } from "vue";
+import TheCart from "./TheCart.vue";
+
+const cartExpanded = ref(false);
 
 function search() {
   console.log("search");
@@ -18,9 +22,14 @@ function search() {
         <BIconSearch />
       </button>
     </form>
-    <button class="cartBtn">
+    <button
+      class="cartBtn"
+      :class="{ expanded: cartExpanded }"
+      @click="cartExpanded = !cartExpanded"
+    >
       <BIconBag />
     </button>
+    <TheCart v-if="cartExpanded" />
   </header>
 </template>
 
@@ -39,14 +48,17 @@ header {
   gap: 0.6rem;
   padding-inline: 0.6rem;
   width: 100%;
-  min-height: 3.4rem;
-  height: 1px;
+  height: 3.4rem;
   background-color: var(--color2);
   position: sticky;
   top: 0;
   z-index: 20;
   max-width: 1280px;
   border-bottom: 2px solid var(--color4);
+
+  a:focus-visible {
+    outline: 2px solid var(--color3);
+  }
 
   h1 {
     user-select: none;
@@ -64,21 +76,17 @@ header {
     flex-grow: 1;
     justify-content: flex-end;
 
-    &:focus-within {
-      input,
-      button {
-        outline: 2px solid var(--color3);
-        z-index: 2;
-      }
-    }
-
     input {
       width: 100%;
       padding-left: 0.6rem;
       border-radius: 999px 0 0 999px;
-
       color: var(--color1);
       max-width: 20rem;
+
+      &:focus-visible {
+        outline: 2px solid var(--color3);
+        z-index: 2;
+      }
     }
 
     button {
@@ -88,6 +96,14 @@ header {
       place-items: center;
       border-radius: 0 999px 999px 0;
       color: var(--color1);
+
+      &:focus-visible {
+        outline: 2px solid var(--color3);
+      }
+
+      &:hover {
+        background-color: var(--color4);
+      }
     }
 
     input,
@@ -106,7 +122,15 @@ header {
     place-items: center;
     border-radius: 999px;
 
+    &:focus-visible {
+      outline: 2px solid var(--color3);
+    }
+
     &:hover {
+      background-color: var(--color4);
+    }
+
+    &.expanded {
       background-color: var(--color4);
     }
   }
@@ -114,7 +138,7 @@ header {
 
 @media (min-width: 481px) {
   header {
-    min-height: 3.8rem;
+    height: 3.8rem;
 
     h1 {
       font-size: 1.8rem;
@@ -140,7 +164,7 @@ header {
 
 @media (min-width: 769px) {
   header {
-    min-height: 4.4rem;
+    height: 4.4rem;
     padding-inline: 1rem;
 
     h1 {
