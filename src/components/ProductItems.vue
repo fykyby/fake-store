@@ -53,7 +53,7 @@ function addToCart(product: Product) {
   <ThePagination />
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .products {
   --addBtnSize: 2.8rem;
 

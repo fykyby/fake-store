@@ -22,7 +22,7 @@ const pageItemLimit = 12;
       v-if="store.page - 1 !== 1"
       class="prev"
       :class="{ disabled: store.page - 1 <= 0 }"
-      :to="`/${store.page - 1}`"
+      :to="`/page/${store.page - 1}`"
     >
       {{ store.page - 1 }}
     </router-link>
@@ -35,7 +35,7 @@ const pageItemLimit = 12;
       {{ store.page - 1 }}
     </router-link>
 
-    <router-link class="current" :to="`/${store.page}`">{{
+    <router-link class="current" :to="`/page/${store.page}`">{{
       store.page
     }}</router-link>
 
@@ -44,7 +44,7 @@ const pageItemLimit = 12;
       :class="{
         disabled: store.page * pageItemLimit + pageItemLimit > store.totalItems,
       }"
-      :to="`/${store.page + 1}`"
+      :to="`/page/${store.page + 1}`"
     >
       {{ store.page + 1 }}
     </router-link>
@@ -54,7 +54,7 @@ const pageItemLimit = 12;
       :class="{
         disabled: store.page * pageItemLimit + pageItemLimit > store.totalItems,
       }"
-      :to="`/${Math.floor(store.totalItems / pageItemLimit)}`"
+      :to="`/page/${Math.floor(store.totalItems / pageItemLimit)}`"
     >
       <BIconSkipForwardFill />
     </router-link>
@@ -67,6 +67,7 @@ const pageItemLimit = 12;
   place-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: 0.6rem;
+  padding-bottom: 1.6rem;
   gap: 0.6rem;
   width: fit-content;
   margin: 0 auto;
