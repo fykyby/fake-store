@@ -1,19 +1,32 @@
 <script setup lang="ts">
 import { store } from "@/store";
 import { BIconSearch, BIconBag } from "bootstrap-icons-vue";
-import { ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import TheCart from "./TheCart.vue";
 
 const cartExpanded = ref(false);
+const headerSticky = ref(true);
 
 function search() {
   console.log("search");
   // TODO
 }
+
+function onScroll() {
+  headerSticky.value = window.scrollY !== 0;
+}
+
+onMounted(() => {
+  onScroll();
+  window.addEventListener("scroll", onScroll);
+});
+onUnmounted(() => {
+  window.removeEventListener("scroll", onScroll);
+});
 </script>
 
 <template>
-  <header>
+  <header :class="{ sticky: headerSticky }">
     <router-link to="/">
       <h1>Fake-Store</h1>
     </router-link>
@@ -58,7 +71,11 @@ header {
   top: 0;
   z-index: 20;
   max-width: 1280px;
-  box-shadow: var(--shadow);
+  border-bottom: 2px solid var(--color4);
+
+  &.sticky {
+    box-shadow: var(--shadow);
+  }
 
   a:focus-visible {
     outline: 2px solid var(--color3);
