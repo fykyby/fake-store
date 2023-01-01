@@ -51,7 +51,9 @@ onMounted(() => {
   <div class="cart" v-click-outside-element="onClickOutside">
     <div class="items">
       <article class="item" v-for="item in store.cart" :key="item.id">
-        <img :src="item.thumbnail" alt="Item thumbnail" />
+        <div class="thumb">
+          <img :src="item.thumbnail" alt="Item thumbnail" />
+        </div>
         <p class="title">{{ item.title }}</p>
         <p class="price">${{ item.price }}</p>
         <button class="deleteItemBtn" @click="deleteFromCart(item.id)">
@@ -100,12 +102,18 @@ onMounted(() => {
       border: 1px solid var(--color4);
       border-radius: var(--border-radius);
 
-      img {
+      .thumb {
         aspect-ratio: 1;
-        width: 3.8rem;
+        height: 3.8rem;
         margin: 0.2rem;
-        object-fit: cover;
         border-radius: var(--border-radius);
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: inherit;
+        }
       }
 
       .title {
