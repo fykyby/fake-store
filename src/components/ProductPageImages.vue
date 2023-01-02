@@ -34,7 +34,6 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .images {
-  // overflow-x: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,7 +55,7 @@ onMounted(() => {
       width: 100%;
       object-fit: contain;
       border-radius: inherit;
-      height: 400px;
+      height: 350px;
     }
   }
 
@@ -64,8 +63,8 @@ onMounted(() => {
     display: flex;
     gap: 0.4rem;
     flex-shrink: 0;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    overflow: auto;
 
     .imgBtn {
       width: 6rem;
@@ -97,6 +96,12 @@ onMounted(() => {
   .images {
     max-width: none;
     gap: 1.8rem;
+
+    .mainImg {
+      img {
+        height: 450px;
+      }
+    }
   }
 }
 </style>
