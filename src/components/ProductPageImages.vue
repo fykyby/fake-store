@@ -49,6 +49,7 @@ onMounted(() => {
     align-items: center;
     width: 100%;
     border-bottom: 2px solid var(--color4);
+    padding-bottom: 1rem;
 
     img {
       height: 100%;
@@ -98,6 +99,8 @@ onMounted(() => {
     gap: 1.8rem;
 
     .mainImg {
+      padding-bottom: 1.8rem;
+
       img {
         height: 450px;
       }
