@@ -166,9 +166,10 @@ onMounted(() => {
     }
 
     button {
-      font-weight: bold;
-      font-size: 1.3em;
-      height: 65%;
+      // font-weight: bold;
+      font-size: 1.2em;
+      // height: 70%;
+      height: 2.6rem;
       padding: 0 1rem;
       border-radius: 999px;
       background-color: var(--color3);

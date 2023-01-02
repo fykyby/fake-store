@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { store } from "@/store";
+import type { Product } from "@/types";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -17,8 +19,11 @@ async function fetchProduct() {
   } else {
     selectedImg.value = data.images[0];
     product.value = data;
-    console.log(data);
   }
+}
+
+function addToCart(product: Product) {
+  store.setCart([...store.cart, product]);
 }
 
 onMounted(fetchProduct);
@@ -50,7 +55,9 @@ onMounted(fetchProduct);
       <p class="price">${{ product.price }}</p>
       <div class="buttons">
         <button>Buy Now</button>
-        <button>Add to Cart</button>
+        <button class="addToCartBtn" @click="addToCart(product)">
+          Add to Cart
+        </button>
       </div>
     </div>
   </main>
