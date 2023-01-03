@@ -66,6 +66,7 @@ onMounted(() => {
     flex-shrink: 0;
     width: 100%;
     overflow: auto;
+    scroll-snap-type: x mandatory;
 
     .imgBtn {
       width: 6rem;
@@ -74,6 +75,7 @@ onMounted(() => {
       border-radius: var(--border-radius);
       overflow: hidden;
       border: 2px solid var(--color4);
+      scroll-snap-align: start;
 
       &:focus-visible {
         outline: none;
