@@ -2,14 +2,18 @@
 import { store } from "@/store";
 import { BIconSearch, BIconBag } from "bootstrap-icons-vue";
 import { onMounted, onUnmounted, ref } from "vue";
+import { useRouter } from "vue-router";
 import TheCart from "./TheCart.vue";
+
+const router = useRouter();
 
 const cartExpanded = ref(false);
 const headerSticky = ref(true);
+const searchQuery = ref("");
 
 function search() {
-  console.log("search");
-  // TODO
+  if (searchQuery.value === "" || searchQuery.value === " ") return;
+  router.push(`/products/search/${searchQuery.value}`);
 }
 
 function onScroll() {
@@ -31,7 +35,7 @@ onUnmounted(() => {
       <h1>Fake-Store</h1>
     </router-link>
     <form @submit.prevent="search">
-      <input type="search" placeholder="Search Product" />
+      <input v-model="searchQuery" type="search" placeholder="Search Product" />
       <button>
         <BIconSearch />
       </button>
