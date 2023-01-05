@@ -24,6 +24,10 @@ const router = createRouter({
       path: "/product/:id",
       component: () => import("../views/ProductView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      component: () => import("../views/PageNotFound.vue"),
+    },
   ],
 });
 
