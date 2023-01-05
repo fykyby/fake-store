@@ -4,15 +4,15 @@ import { store } from "@/store";
 import type { Product } from "@/types";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+import { fetchData } from "@/misc";
 
 const route = useRoute();
 const product = ref();
 
 async function fetchProduct() {
-  const response = await fetch(
+  const data = await fetchData(
     `https://dummyjson.com/products/${route.params.id}`
   );
-  const data = await response.json();
 
   if (data.message) {
     // ERROR
