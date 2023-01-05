@@ -5,18 +5,21 @@ import { store } from "@/store";
 import { onMounted } from "vue";
 
 async function fetchProducts() {
+  store.setProducts([]);
   const data = await fetchData(
     `https://dummyjson.com/products?limit=4&select=category,id,price,thumbnail,title`
   );
   store.setProducts(data.products);
 }
 
-onMounted(fetchProducts);
+onMounted(() => {
+  fetchProducts();
+});
 </script>
 
 <template>
   <main>
-    <section class="products">
+    <section class="products" v-if="store.products.length > 0">
       <h1>Products</h1>
       <router-link to="/products">Show all</router-link>
       <ProductList />

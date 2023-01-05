@@ -9,7 +9,10 @@ const pageItemLimit = 12;
 </script>
 
 <template>
-  <div class="pagination" v-if="store.totalItems > pageItemLimit">
+  <div
+    class="pagination"
+    v-if="store.totalItems > pageItemLimit && store.products.length > 0"
+  >
     <router-link
       class="first"
       :class="{ disabled: store.page - 1 <= 0 }"

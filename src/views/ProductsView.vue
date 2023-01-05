@@ -19,6 +19,7 @@ function syncPageToRoute(newParams: any) {
 }
 
 async function fetchProducts() {
+  store.setProducts([]);
   const data = await fetchData(
     `https://dummyjson.com/products?limit=${pageItemLimit}&skip=${
       (store.page - 1) * pageItemLimit
@@ -44,6 +45,8 @@ watch(
 </script>
 
 <template>
-  <ProductList />
-  <ThePagination />
+  <main>
+    <ProductList />
+    <ThePagination />
+  </main>
 </template>
