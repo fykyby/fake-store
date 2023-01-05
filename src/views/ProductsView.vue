@@ -20,11 +20,17 @@ function syncPageToRoute(newParams: any) {
 
 async function fetchProducts() {
   store.setProducts([]);
-  const data = await fetchData(
-    `https://dummyjson.com/products?limit=${pageItemLimit}&skip=${
-      (store.page - 1) * pageItemLimit
-    }&select=category,id,price,thumbnail,title`
-  );
+  const url = route.params.category
+    ? `https://dummyjson.com/products/category/${
+        route.params.category
+      }?limit=${pageItemLimit}&skip=${
+        (store.page - 1) * pageItemLimit
+      }&select=category,id,price,thumbnail,title`
+    : `https://dummyjson.com/products?limit=${pageItemLimit}&skip=${
+        (store.page - 1) * pageItemLimit
+      }&select=category,id,price,thumbnail,title`;
+
+  const data = await fetchData(url);
   store.setProducts(data.products);
   store.setTotalItems(data.total);
 }

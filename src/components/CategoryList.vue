@@ -28,7 +28,7 @@ onMounted(fetchCategories);
       class="categoryItem"
       v-for="category in fixedCategories"
       :key="category.urlCategory"
-      :to="`/category/${category.urlCategory}`"
+      :to="`/products/category/${category.urlCategory}`"
     >
       {{ category.displayCategory }}
     </router-link>
