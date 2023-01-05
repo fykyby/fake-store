@@ -5,6 +5,7 @@ import type { Product } from "@/types";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { fetchData } from "@/misc";
+import { BIconBagPlus } from "bootstrap-icons-vue";
 
 const route = useRoute();
 const product = ref();
@@ -40,7 +41,7 @@ onMounted(fetchProduct);
       <div class="buttons">
         <button>Buy Now</button>
         <button class="addToCartBtn" @click="addToCart(product)">
-          Add to Cart
+          <BIconBagPlus />
         </button>
       </div>
     </div>
@@ -113,6 +114,14 @@ main {
       flex-wrap: wrap;
       gap: 0.6em;
 
+      .addToCartBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 1;
+        padding: 0;
+      }
+
       & > button {
         background-color: var(--color3);
         height: 2em;
@@ -120,6 +129,12 @@ main {
         font-size: 1.2em;
         padding-inline: 1rem;
         border-radius: 999px;
+
+        &:focus-visible {
+          outline: none;
+          scale: 1.05;
+          background-color: var(--color6);
+        }
 
         &:hover {
           background: var(--color6);

@@ -112,6 +112,11 @@ main {
         z-index: 2;
         background-color: var(--color2);
 
+        &:focus-visible {
+          outline: none;
+          border: 2px solid var(--color3);
+        }
+
         &.selected {
           background-color: var(--color4);
         }

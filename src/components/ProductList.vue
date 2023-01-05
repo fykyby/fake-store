@@ -36,6 +36,7 @@ function addToCart(product: Product) {
 
   article {
     position: relative;
+
     .product {
       background-color: var(--color2);
       outline: 2px solid var(--color4);
@@ -48,6 +49,10 @@ function addToCart(product: Product) {
       aspect-ratio: 1;
       transition: scale 0.2s;
       position: relative;
+
+      &:focus-visible {
+        outline: 2px solid var(--color3);
+      }
 
       &:hover {
         outline: 2px solid var(--color3);

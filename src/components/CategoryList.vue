@@ -53,6 +53,11 @@ onMounted(fetchCategories);
     &:hover {
       background-color: var(--color4);
     }
+
+    &:focus-visible {
+      outline: none;
+      border: 2px solid var(--color3);
+    }
   }
 }
 
