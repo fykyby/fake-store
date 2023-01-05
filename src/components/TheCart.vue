@@ -204,6 +204,12 @@ onMounted(() => {
         &:hover {
           background-color: var(--color6);
         }
+
+        &:disabled {
+          &:hover {
+            background-color: var(--color4);
+          }
+        }
       }
     }
   }
