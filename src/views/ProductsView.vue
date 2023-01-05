@@ -1,11 +1,22 @@
 <script setup lang="ts">
 import { store } from "@/store";
 import { BIconBagPlus } from "bootstrap-icons-vue";
-import ThePagination from "./ThePagination.vue";
+import ThePagination from "@/components/ThePagination.vue";
 import { onMounted, watch } from "vue";
 import type { Product } from "@/types";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 const pageItemLimit = 12;
+
+function syncPageToRoute(newParams: any) {
+  const newPage = Array.isArray(newParams.page)
+    ? parseInt(newParams.page[0])
+    : parseInt(newParams.page) || 1;
+
+  store.setPage(newPage);
+}
 
 async function fetchProducts() {
   const response = await fetch(
@@ -22,6 +33,8 @@ onMounted(() => {
   fetchProducts();
 });
 
+syncPageToRoute(route.params);
+watch(() => route.params, syncPageToRoute);
 watch(
   () => store.page,
   () => {
@@ -38,7 +51,7 @@ function addToCart(product: Product) {
 <template>
   <div class="products">
     <article v-for="product in store.products" :key="product.id">
-      <router-link class="product" :to="`/products/${product.id}`">
+      <router-link class="product" :to="`/product/${product.id}`">
         <img :src="product.thumbnail" :alt="product.title + ' thumbnail'" />
         <p class="title">{{ product.title }}</p>
         <p class="price">${{ product.price }}</p>
