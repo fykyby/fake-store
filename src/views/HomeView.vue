@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CategoryList from "@/components/CategoryList.vue";
 import ProductList from "@/components/ProductList.vue";
 import { fetchData } from "@/misc";
 import { store } from "@/store";
@@ -19,9 +20,20 @@ onMounted(() => {
 
 <template>
   <main>
+    <section class="categories">
+      <div class="top">
+        <div class="hidden"></div>
+        <h1>Categories</h1>
+        <button class="showAll">Show all</button>
+      </div>
+      <CategoryList />
+    </section>
     <section class="products" v-if="store.products.length > 0">
-      <h1>Products</h1>
-      <router-link to="/products">Show all</router-link>
+      <div class="top">
+        <div class="hidden"></div>
+        <h1>Products</h1>
+        <router-link class="showAll" to="/products">Show all</router-link>
+      </div>
       <ProductList />
     </section>
   </main>
@@ -34,27 +46,38 @@ main {
   margin: 0 auto;
   font-size: 1rem;
   padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-  .products {
-    position: relative;
-    h1 {
+  section {
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding-inline: 0.6rem;
-      font-size: 1.8em;
-    }
 
-    a {
-      position: absolute;
-      right: 0.6rem;
-      top: -0.2rem;
-      padding-inline: 0.6rem;
-      padding-block: 0.2rem;
-      border: 2px solid var(--color4);
-      border-radius: 999px;
-      font-size: 1.2em;
-      z-index: 2;
+      .hidden {
+        display: none;
+      }
 
-      &:hover {
-        background-color: var(--color4);
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .showAll {
+        width: 6rem;
+        padding-inline: 0.4rem;
+        padding-block: 0.1rem;
+        border: 2px solid var(--color4);
+        border-radius: 999px;
+        font-size: 1em;
+        z-index: 2;
+        background-color: var(--color2);
+
+        &:hover {
+          background-color: var(--color4);
+        }
       }
     }
   }
@@ -64,14 +87,23 @@ main {
   main {
     font-size: 1.2rem;
     padding-block: 2rem;
-    .products {
-      h1 {
-        padding-inline: 1rem;
-      }
+    gap: 2rem;
 
-      a {
-        right: 1rem;
+    section {
+      .top {
         padding-inline: 1rem;
+
+        .hidden {
+          width: 7rem;
+          display: block;
+          visibility: hidden;
+        }
+
+        .showAll {
+          width: 7rem;
+          padding-inline: 1rem;
+          padding-block: 0.3rem;
+        }
       }
     }
   }
