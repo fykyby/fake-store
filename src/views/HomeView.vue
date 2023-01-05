@@ -3,7 +3,9 @@ import CategoryList from "@/components/CategoryList.vue";
 import ProductList from "@/components/ProductList.vue";
 import { fetchData } from "@/misc";
 import { store } from "@/store";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+
+const categoriesExpanded = ref(false);
 
 async function fetchProducts() {
   store.setProducts([]);
@@ -20,15 +22,21 @@ onMounted(() => {
 
 <template>
   <main>
-    <section class="categories">
+    <section class="categories" :class="{ expanded: categoriesExpanded }">
       <div class="top">
         <div class="hidden"></div>
         <h1>Categories</h1>
-        <button class="showAll">Show all</button>
+        <button
+          class="showAll"
+          :class="{ selected: categoriesExpanded }"
+          @click="categoriesExpanded = !categoriesExpanded"
+        >
+          Show all
+        </button>
       </div>
       <CategoryList />
     </section>
-    <section class="products" v-if="store.products.length > 0">
+    <section class="products">
       <div class="top">
         <div class="hidden"></div>
         <h1>Products</h1>
@@ -49,6 +57,35 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  .categories {
+    position: relative;
+    overflow-y: hidden;
+    height: 10rem;
+
+    &::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5rem;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+      );
+    }
+
+    &.expanded {
+      height: auto;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
 
   section {
     .top {
@@ -74,6 +111,10 @@ main {
         font-size: 1em;
         z-index: 2;
         background-color: var(--color2);
+
+        &.selected {
+          background-color: var(--color4);
+        }
 
         &:hover {
           background-color: var(--color4);
@@ -104,6 +145,22 @@ main {
           padding-inline: 1rem;
           padding-block: 0.3rem;
         }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  main {
+    .categories {
+      height: auto;
+
+      &::after {
+        display: none;
+      }
+
+      .showAll {
+        visibility: hidden;
       }
     }
   }

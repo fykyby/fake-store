@@ -23,9 +23,9 @@ onMounted(fetchCategories);
 </script>
 
 <template>
-  <div class="categories">
+  <div class="categoryList">
     <router-link
-      class="category"
+      class="categoryItem"
       v-for="category in fixedCategories"
       :key="category.urlCategory"
       :to="`/category/${category.urlCategory}`"
@@ -36,7 +36,7 @@ onMounted(fetchCategories);
 </template>
 
 <style scoped lang="scss">
-.categories {
+.categoryList {
   padding-block: 1rem;
   padding-inline: 0.6rem;
   display: flex;
@@ -44,7 +44,7 @@ onMounted(fetchCategories);
   gap: 0.6rem;
   justify-content: center;
 
-  .category {
+  .categoryItem {
     border: 2px solid var(--color4);
     border-radius: var(--border-radius);
     padding: 0.2rem 0.6rem;
@@ -57,9 +57,10 @@ onMounted(fetchCategories);
 }
 
 @media (min-width: 769px) {
-  .categories {
+  .categoryList {
     padding-block: 2rem;
     padding-inline: 1rem;
+    gap: 0.8rem;
   }
 }
 </style>
