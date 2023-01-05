@@ -56,7 +56,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.6rem;
+  gap: 1rem;
   width: 100%;
   height: 100%;
 
