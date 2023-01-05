@@ -146,9 +146,9 @@ onMounted(() => {
           outline: 2px solid var(--color3);
         }
 
-        &:hover {
-          background-color: var(--color4);
-        }
+        // &:hover {
+        //   background-color: var(--color4);
+        // }
       }
     }
   }
@@ -166,16 +166,13 @@ onMounted(() => {
     }
 
     button {
-      // font-weight: bold;
       font-size: 1.2em;
-      // height: 70%;
       height: 2.6rem;
       padding: 0 1rem;
       border-radius: 999px;
       background-color: var(--color3);
       color: var(--color2);
 
-      &:hover,
       &:focus-visible {
         background-color: var(--color6);
         outline: none;
@@ -185,6 +182,28 @@ onMounted(() => {
         cursor: default;
         background-color: var(--color4);
         color: var(--color5);
+      }
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cart {
+    .items {
+      .item {
+        .deleteItemBtn {
+          &:hover {
+            background-color: var(--color4);
+          }
+        }
+      }
+    }
+
+    .details {
+      button {
+        &:hover {
+          background-color: var(--color6);
+        }
       }
     }
   }

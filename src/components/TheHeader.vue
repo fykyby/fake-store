@@ -125,10 +125,6 @@ header {
       &:focus-visible {
         outline: 2px solid var(--color3);
       }
-
-      &:hover {
-        background-color: var(--color4);
-      }
     }
 
     input,
@@ -152,10 +148,6 @@ header {
       outline: 2px solid var(--color3);
     }
 
-    &:hover {
-      background-color: var(--color4);
-    }
-
     &.expanded {
       outline: 2px solid var(--color4);
     }
@@ -174,6 +166,18 @@ header {
       justify-content: center;
       align-items: center;
       pointer-events: none;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  header {
+    button {
+      &:hover {
+        &:hover {
+          background-color: var(--color4);
+        }
+      }
     }
   }
 }

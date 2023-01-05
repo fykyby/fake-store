@@ -19,9 +19,15 @@ main {
     border-radius: 999px;
     padding: 0.2rem 1rem;
     width: fit-content;
+  }
+}
 
-    &:hover {
-      background-color: var(--color4);
+@media (hover: hover) and (pointer: fine) {
+  main {
+    a {
+      &:hover {
+        background-color: var(--color4);
+      }
     }
   }
 }

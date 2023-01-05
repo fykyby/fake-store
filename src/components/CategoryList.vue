@@ -50,13 +50,19 @@ onMounted(fetchCategories);
     padding: 0.2rem 0.6rem;
     text-transform: capitalize;
 
-    &:hover {
-      background-color: var(--color4);
-    }
-
     &:focus-visible {
       outline: none;
       border: 2px solid var(--color3);
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .categoryList {
+    .categoryItem {
+      &:hover {
+        background-color: var(--color4);
+      }
     }
   }
 }

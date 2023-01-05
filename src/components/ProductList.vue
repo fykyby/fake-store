@@ -55,10 +55,6 @@ function addToCart(product: Product) {
         outline: 2px solid var(--color3);
       }
 
-      &:hover {
-        outline: 2px solid var(--color3);
-      }
-
       img {
         object-fit: cover;
         height: 100%;
@@ -99,10 +95,28 @@ function addToCart(product: Product) {
     background-color: var(--color3);
     color: var(--color2);
 
-    &:hover,
     &:focus-visible {
       scale: 1.1;
       outline: none;
+      background-color: var(--color6);
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .products {
+    article {
+      .product {
+        &:hover {
+          outline: 2px solid var(--color3);
+        }
+      }
+    }
+  }
+
+  .addToCartBtn {
+    &:hover {
+      scale: 1.1;
       background-color: var(--color6);
     }
   }

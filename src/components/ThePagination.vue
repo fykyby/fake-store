@@ -86,18 +86,10 @@ const pageItemLimit = 12;
     justify-content: center;
     align-items: center;
 
-    &:hover {
-      background: var(--color4);
-    }
-
     &.disabled {
       cursor: default;
       color: var(--color5);
       pointer-events: none;
-
-      &:hover {
-        background: none;
-      }
     }
   }
 
@@ -126,6 +118,22 @@ const pageItemLimit = 12;
   .last {
     grid-column-start: 5;
     grid-column-end: 6;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pagination {
+    a {
+      &:hover {
+        background-color: var(--color4);
+      }
+
+      &.disabled {
+        &:hover {
+          background: none;
+        }
+      }
+    }
   }
 }
 </style>

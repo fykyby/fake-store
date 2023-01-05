@@ -122,7 +122,7 @@ main {
         padding: 0;
       }
 
-      & > button {
+      button {
         background-color: var(--color3);
         height: 2em;
         color: white;
@@ -135,9 +135,19 @@ main {
           scale: 1.05;
           background-color: var(--color6);
         }
+      }
+    }
+  }
+}
 
-        &:hover {
-          background: var(--color6);
+@media (hover: hover) and (pointer: fine) {
+  main {
+    .info {
+      .buttons {
+        button {
+          &:hover {
+            background: var(--color6);
+          }
         }
       }
     }

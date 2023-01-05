@@ -120,9 +120,19 @@ main {
         &.selected {
           background-color: var(--color4);
         }
+      }
+    }
+  }
+}
 
-        &:hover {
-          background-color: var(--color4);
+@media (hover: hover) and (pointer: fine) {
+  main {
+    section {
+      .top {
+        .showAll {
+          &:hover {
+            background-color: var(--color4);
+          }
         }
       }
     }
