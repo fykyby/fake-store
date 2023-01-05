@@ -29,7 +29,8 @@ function addToCart(product: Product) {
 
   gap: 1rem;
   row-gap: calc(1rem + var(--addBtnSize) / 2);
-  padding-block: 1rem;
+  padding-top: 1rem;
+  padding-bottom: calc(1rem + var(--addBtnSize) / 2);
   padding-inline: 0.6rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
